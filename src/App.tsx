@@ -1,7 +1,11 @@
+import Container from "./components/Container";
+
 export default function App() {
   return (
     <>
-      <h1> Todo </h1>
+      <Container>
+        <h1 className=""> Todo </h1>
+      </Container>
     </>
   );
 }
