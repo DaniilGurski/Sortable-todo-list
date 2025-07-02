@@ -1,16 +1,22 @@
-import { useAtomValue } from "jotai";
+import { useAtomValue, useAtom } from "jotai";
 import Container from "./components/Container";
 import ListFilter from "./components/ListFilter";
 import ThemeSwitch from "./components/ThemeSwitch";
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
-import { todosAtom } from "./atoms";
-import { useEffect } from "react";
+import { filteredTodosAtom, todosAtom } from "./atoms";
 
 // TODO: Add alias import
-// TODO: Add colors from style guide
+// TODO: Drag and drop
+// TODO: Dark theme styling
 export default function App() {
-  const todos = useAtomValue(todosAtom);
+  const [todos, setTodos] = useAtom(todosAtom);
+  const filteredTodos = useAtomValue(filteredTodosAtom);
+  const itemsLeft = todos.filter((todo) => !todo.completed).length;
+
+  const handleClearCompleted = () => {
+    setTodos((prev) => prev.filter((todo) => !todo.completed));
+  };
 
   return (
     <>
@@ -26,9 +32,9 @@ export default function App() {
 
           <TodoForm />
 
-          <div className="mb-4 overflow-hidden rounded-lg shadow-sm shadow-gray-500/15">
+          <div className="mb-4 overflow-hidden rounded-lg bg-white shadow-sm shadow-gray-500/15">
             <ul className="min-h-32 divide-y-2 divide-gray-200">
-              {todos.map(({ id, task, completed }) => {
+              {filteredTodos.map(({ id, task, completed }) => {
                 return (
                   <TodoItem
                     key={id}
@@ -41,12 +47,12 @@ export default function App() {
             </ul>
 
             <footer className="flex justify-between border-t-2 border-gray-200 bg-white px-5 py-3 text-gray-500">
-              <span> n items left </span>
+              <span> {itemsLeft} items left </span>
 
               {/* Desktop Button list */}
               <ListFilter className="hidden md:flex" />
 
-              <button> Clear Completed</button>
+              <button onClick={handleClearCompleted}> Clear Completed</button>
             </footer>
           </div>
 

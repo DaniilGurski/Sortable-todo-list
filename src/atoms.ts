@@ -8,4 +8,20 @@ export const themeAtom = atomWithStorage<"light" | "dark">(
 );
 export const todosAtom = atomWithStorage<Todo[]>("todos", []);
 
+export const filteredTodosAtom = atom<Todo[]>((get) => {
+  const filterMode = get(filterModeAtom);
+  const todos = get(todosAtom);
+
+  switch (filterMode) {
+    case "All":
+      return todos;
+    case "Active":
+      return todos.filter((todo) => !todo.completed);
+    case "Completed":
+      return todos.filter((todo) => todo.completed);
+    default:
+      return todos;
+  }
+});
+
 export const filterModeAtom = atom<"All" | "Active" | "Completed">("All");
