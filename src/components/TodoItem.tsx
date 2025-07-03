@@ -1,15 +1,24 @@
 import { Checkbox } from "@headlessui/react";
 import iconCheckmark from "../assets/icon-check.svg";
 import iconCross from "../assets/icon-cross.svg";
-import { useEffect, useState } from "react";
 import type { Todo } from "../types";
 import { useSetAtom } from "jotai";
 import { todosAtom } from "../atoms";
-// import { useState } from "react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import iconDraggable from "../assets/icon-draggable.svg";
 
 type TodoItemProps = Todo;
 
 export default function TodoItem({ id, task, completed }: TodoItemProps) {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
   const setTodos = useSetAtom(todosAtom);
 
   const handleCheckboxChange = () => {
@@ -27,7 +36,11 @@ export default function TodoItem({ id, task, completed }: TodoItemProps) {
   };
 
   return (
-    <li className="flex justify-between bg-white px-5 py-3">
+    <li
+      className="flex items-center justify-between bg-white px-5 py-3"
+      ref={setNodeRef}
+      style={style}
+    >
       <div className="flex gap-3">
         <Checkbox
           checked={completed}
@@ -44,14 +57,30 @@ export default function TodoItem({ id, task, completed }: TodoItemProps) {
         </span>
       </div>
 
-      <button
-        className="cursor-pointer"
-        aria-label="delete todo"
-        onClick={handleRemoveClick}
-      >
-        <span className="sr-only"> Delete Todo </span>
-        <img src={iconCross} alt="" />
-      </button>
+      <ul className="flex items-center gap-x-2">
+        <li>
+          <button
+            className="cursor-pointer"
+            aria-label="drag and drop todo"
+            onClick={handleRemoveClick}
+            {...listeners}
+            {...attributes}
+          >
+            <span className="sr-only"> Drag and drop todo </span>
+            <img src={iconDraggable} alt="" />
+          </button>
+        </li>
+        <li>
+          <button
+            className="cursor-pointer"
+            aria-label="delete todo"
+            onClick={handleRemoveClick}
+          >
+            <span className="sr-only"> Delete Todo </span>
+            <img src={iconCross} alt="" />
+          </button>
+        </li>
+      </ul>
     </li>
   );
 }
