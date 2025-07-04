@@ -12,7 +12,7 @@
 }
 
 @layer components {
-  .layer-block {
+  .container-block {
     @apply bg-white shadow-2xs shadow-gray-500/15 dark:bg-gray-800 dark:shadow-gray-900/50;
   }
 }

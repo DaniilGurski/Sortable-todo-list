@@ -34,7 +34,7 @@ export default function App() {
 
           <TodoForm />
 
-          <div className="layer-block mb-4 overflow-hidden rounded-lg shadow-sm">
+          <div className="container-block mb-4 overflow-hidden rounded-lg shadow-sm">
             <TodoList />
 
             <footer className="flex justify-between px-5 py-3 text-gray-500">
@@ -50,7 +50,7 @@ export default function App() {
           </div>
 
           {/* Mobile Button list*/}
-          <ListFilter className="layer-block flex justify-center rounded-sm px-5 py-3 text-gray-500 md:hidden" />
+          <ListFilter className="container-block flex justify-center rounded-sm px-5 py-3 text-gray-500 md:hidden" />
 
           <p className="mt-12 text-center text-gray-500">
             Drag and drop to reorder list
