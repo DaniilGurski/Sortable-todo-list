@@ -1,6 +1,6 @@
 import { Radio, RadioGroup } from "@headlessui/react";
 import clsx from "clsx";
-import { useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 import { filterModeAtom } from "../atoms";
 
 const filters = ["All", "Active", "Completed"];
@@ -10,10 +10,11 @@ type ListFilterProps = {
 };
 
 export default function ListFilter({ className }: ListFilterProps) {
-  const setFilterMode = useSetAtom(filterModeAtom);
+  const [filterMode, setFilterMode] = useAtom(filterModeAtom);
 
   return (
     <RadioGroup
+      value={filterMode}
       onChange={setFilterMode}
       className={clsx("gap-x-2", className)}
       aria-label="todo list filter"
