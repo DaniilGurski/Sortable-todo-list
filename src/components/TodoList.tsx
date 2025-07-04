@@ -48,7 +48,7 @@ export default function TodoList() {
   }
 
   return (
-    <ul className="min-h-32 divide-y-2 divide-gray-200">
+    <ul className="min-h-32 divide-y-2 divide-gray-200 dark:divide-gray-700 dark:bg-gray-800">
       <DndContext
         onDragEnd={handleDragEnd}
         collisionDetection={closestCenter}

@@ -18,16 +18,16 @@ export default function TodoForm() {
 
   return (
     <form
-      className="mb-4 flex gap-3 rounded-sm bg-white px-5 py-3"
+      className="mb-4 flex gap-3 rounded-sm bg-white px-5 py-3 dark:bg-gray-800 dark:text-gray-400"
       onSubmit={handleSubmit}
     >
       <div
-        className="size-6 rounded-full outline-1 outline-gray-300"
+        className="size-6 rounded-full outline-1 outline-gray-300 dark:outline-gray-700"
         aria-hidden="true"
       ></div>
       <input
         onChange={(e) => setTask(e.currentTarget.value)}
-        className="caret-blue-500 outline-none"
+        className="caret-blue-500 outline-none placeholder:text-current"
         placeholder="Create a new todo..."
       />
     </form>

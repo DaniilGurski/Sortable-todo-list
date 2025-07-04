@@ -37,7 +37,7 @@ export default function TodoItem({ id, task, completed }: TodoItemProps) {
 
   return (
     <li
-      className="flex items-center justify-between bg-white px-5 py-3"
+      className="flex items-center justify-between bg-white px-5 py-3 dark:bg-gray-800"
       ref={setNodeRef}
       style={style}
     >
@@ -46,13 +46,13 @@ export default function TodoItem({ id, task, completed }: TodoItemProps) {
           checked={completed}
           defaultChecked={completed}
           onChange={handleCheckboxChange}
-          className="peer grid size-6 cursor-pointer place-items-center rounded-full bg-white from-blue-400 to-purple-400 outline-1 outline-gray-300 data-checked:bg-linear-75 data-checked:not-data-focus:outline-transparent data-focus:outline-2 data-focus:outline-black"
+          className="peer grid size-6 cursor-pointer place-items-center rounded-full from-blue-400 to-purple-400 outline-1 outline-gray-300 data-checked:bg-linear-75 data-checked:not-data-focus:outline-transparent data-focus:outline-2 data-focus:outline-black dark:outline-gray-700"
         >
           {/* Checkmark icon */}
-          <img src={iconCheckmark} alt="" />
+          {completed && <img src={iconCheckmark} alt="" />}
         </Checkbox>
 
-        <span className="text-gray-800 peer-data-checked:text-gray-400 peer-data-checked:line-through">
+        <span className="text-gray-800 peer-data-checked:text-gray-400 peer-data-checked:line-through dark:text-gray-400">
           {task}
         </span>
       </div>

@@ -1,3 +1,15 @@
-<?xml version="1.0"?><svg height="32px" id="icon" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style type="text/css">
-	.st0{fill:none;}
-</style><title/><rect height="4" width="4" x="10" y="6"/><rect height="4" width="4" x="18" y="6"/><rect height="4" width="4" x="10" y="14"/><rect height="4" width="4" x="18" y="14"/><rect height="4" width="4" x="10" y="22"/><rect height="4" width="4" x="18" y="22"/><rect class="st0" height="32" id="_Transparent_Rectangle_" width="32"/></svg>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_0_3)">
+<path d="M14 6H10V10H14V6Z" fill="#494C6B"/>
+<path d="M22 6H18V10H22V6Z" fill="#494C6B"/>
+<path d="M14 14H10V18H14V14Z" fill="#494C6B"/>
+<path d="M22 14H18V18H22V14Z" fill="#494C6B"/>
+<path d="M14 22H10V26H14V22Z" fill="#494C6B"/>
+<path d="M22 22H18V26H22V22Z" fill="#494C6B"/>
+</g>
+<defs>
+<clipPath id="clip0_0_3">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>

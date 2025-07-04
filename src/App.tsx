@@ -34,21 +34,23 @@ export default function App() {
 
           <TodoForm />
 
-          <div className="mb-4 overflow-hidden rounded-lg bg-white shadow-sm shadow-gray-500/15">
+          <div className="layer-block mb-4 overflow-hidden rounded-lg shadow-sm">
             <TodoList />
 
-            <footer className="flex justify-between bg-white px-5 py-3 text-gray-500">
+            <footer className="flex justify-between px-5 py-3 text-gray-500">
               <span> {itemsLeft} items left </span>
 
               {/* Desktop Button list */}
               <ListFilter className="hidden md:flex" />
 
-              <button onClick={handleClearCompleted}> Clear Completed</button>
+              <button className="cursor-pointer" onClick={handleClearCompleted}>
+                Clear Completed
+              </button>
             </footer>
           </div>
 
           {/* Mobile Button list*/}
-          <ListFilter className="flex justify-center rounded-br-sm rounded-bl-sm bg-white px-5 py-3 text-gray-500 shadow-lg shadow-gray-500/15 md:hidden" />
+          <ListFilter className="layer-block flex justify-center rounded-sm px-5 py-3 text-gray-500 md:hidden" />
 
           <p className="mt-12 text-center text-gray-500">
             Drag and drop to reorder list
