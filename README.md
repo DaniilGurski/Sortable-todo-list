@@ -1,48 +1,22 @@
-## Switching app theme
+# Project highlights
 
-### Variant 1:
+- Theme container
 
-```css
-@import "tailwindcss";
+- Using dnd-kit for sortable list
 
-@layer base {
-  body {
-    background-image: url("./assets/bg-desktop-light.jpg");
-    background-repeat: no-repeat;
-    background-size: contain;
+## Theme container
 
-    &:has([data-theme="dark"]) {
-      background-image: url("./assets/bg-desktop-dark.jpg");
-    }
-  }
-}
+The easiest way I found to handle dark mode is to have a container with data-theme attributes and wrap everything else in it. Then you can use **dark** utility class in Tailwind and change component styles according to current theme.
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-```
-
-```js
-import { useAtomValue } from "jotai";
-import { type PropsWithChildren } from "react";
-import { themeAtom } from "../atoms";
-
-export default function Container({ children }: PropsWithChildren) {
-  const theme = useAtomValue(themeAtom);
-
-  return (
-    <div className="h-dvh" data-theme={theme}>
-      {children}
-    </div>
-  );
-}
-```
-
-### Variant 2:
+### CSS:
 
 ```css
 @import "tailwindcss";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 ```
+
+### JS:
 
 ```js
 import { useAtomValue } from "jotai";
@@ -63,6 +37,13 @@ export default function Container({ children }: PropsWithChildren) {
 }
 ```
 
-## Contents
+### Useful resources
 
-- Theme providing container
+- [Toggling dark mode manually with Tailwind CSS](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually)
+
+## Sortable list
+
+### Useful resources
+
+- [Dnd-kit Sortable Preset](https://docs.dndkit.com/presets/sortable)
+- [React DND Kit: Creating Vertical Sortable Lists Tutorial](https://www.youtube.com/watch?v=wmk50PEsVrs)
